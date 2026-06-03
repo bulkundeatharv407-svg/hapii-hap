@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#ff3b6f">
+    <title>Happy Birthday, My Love Aho | Romantic Birthday Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose-gold: #ffb7b2;
+            --deep-rose: #ff4d6d;
+            --champagne: #fff0e6;
+            --velvet: #80002a;
+            --gold-light: #ffdfa5;
+            --shadow-soft: 0 25px 40px -12px rgba(0, 0, 0, 0.35);
+            --glass-bg: rgba(255, 245, 240, 0.2);
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #ffb88c 0%, #ff6f91 45%, #ff3b6f 100%);
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* animated gradient overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 10%, rgba(255, 220, 180, 0.3), rgba(255, 80, 120, 0.1));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* main card container — glassmorphic elegance */
+        .birthday-card {
+            max-width: 880px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 3rem;
+            padding: 2rem 2rem 2.5rem;
+            box-shadow: var(--shadow-soft), 0 0 0 1px rgba(255, 255, 245, 0.3);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            border: 1px solid rgba(255, 245, 235, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .birthday-card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 2rem;
+            }
+        }
+
+        /* cake icon with subtle floating */
+        .cake-icon {
+            font-size: 5rem;
+            display: inline-block;
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
+            animation: softFloat 3s infinite ease-in-out;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cake-icon:hover {
+            transform: scale(1.03);
+        }
+
+        @keyframes softFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: 3.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff8e7, #ffdd99, #ffb3ba);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 0.6rem 0 0.3rem;
+        }
+
+        @media (max-width: 550px) {
+            h1 { font-size: 2.4rem; }
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.25);
+            display: inline-block;
+            padding: 0.4rem 1.5rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            color: #fff5e6;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        /* 3D gift box */
+        .gift-box {
+            width: 160px;
+            height: 160px;
+            margin: 30px auto 20px;
+            background: linear-gradient(145deg, #ff3860, #cc2e52);
+            border-radius: 24px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.4), inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.25s ease;
+            animation: gentleBounce 2.2s infinite;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.02);
+            background: linear-gradient(145deg, #ff4870, #dc2e55);
+            box-shadow: 0 24px 34px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 160px;
+            background: #ffd966;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 8px;
+            box-shadow: inset -2px 0 0 rgba(0,0,0,0.05);
+        }
+
+        .gift-box::after {
+            content: '🎁';
+            position: absolute;
+            font-size: 78px;
+            top: 34px;
+            left: 40px;
+            filter: drop-shadow(2px 6px 8px rgba(0,0,0,0.2));
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* surprise message */
+        .surprise-message {
+            display: none;
+            background: linear-gradient(115deg, #fff2e6, #ffe0d4);
+            border-radius: 60px;
+            padding: 16px 20px;
+            margin: 15px auto 5px;
+            max-width: 90%;
+            font-size: 1.7rem;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+            color: #a1224a;
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ffc0cb;
+            animation: elegantZoom 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        @keyframes elegantZoom {
+            from { opacity: 0; transform: scale(0.7) rotate(-2deg); }
+            to { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        /* romantic extra note */
+        .extra-romance {
+            background: rgba(255, 245, 235, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 60px;
+            padding: 14px 24px;
+            margin: 12px auto;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #6b2e46;
+            display: inline-block;
+            border-left: 5px solid #ff4d6d;
+            border-right: 5px solid #ff4d6d;
+            transition: all 0.3s;
+        }
+
+        /* typed message */
+        .typed-message {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.2rem 1.8rem;
+            margin: 28px 0 16px;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: #fffaf2;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        /* love letter button */
+        .love-letter-btn {
+            background: linear-gradient(95deg, #ff3b6f, #ff6b8b);
+            border: none;
+            padding: 12px 32px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0.5rem 0.5rem 0.8rem;
+            transition: 0.2s;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .love-letter-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(95deg, #ff1f55, #ff5478);
+            box-shadow: 0 14px 22px rgba(0, 0, 0, 0.25);
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff1e0;
+            text-shadow: 0 3px 5px #a12a4a;
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 0.2rem 2rem;
+            border-radius: 80px;
+            margin-top: 15px;
+        }
+
+        /* Modal - Love Letter Elegant */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-card {
+            background: #fffef7;
+            max-width: 500px;
+            width: 88%;
+            border-radius: 48px;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.4);
+            border: 2px solid #ffb3ba;
+            animation: modalRise 0.4s ease-out;
+        }
+
+        @keyframes modalRise {
+            from { opacity: 0; transform: scale(0.92) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-card h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #be2e5c;
+            margin-bottom: 1rem;
+        }
+
+        .modal-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #3d2b2b;
+            margin: 1rem 0;
+        }
+
+        .close-modal {
+            background: #ff6680;
+            border: none;
+            padding: 8px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: white;
+            margin-top: 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Floating elements: petals + romantic hearts (refined) */
+        .rose-petal {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.6rem;
+            z-index: 5;
+            animation: fallPetal 9s linear forwards;
+            opacity: 0.7;
+        }
+
+        @keyframes fallPetal {
+            0% { transform: translateY(-20vh) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+        }
+
+        .romantic-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.5rem;
+            z-index: 5;
+            animation: floatHeartRomance 12s linear infinite;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 3px #ffafc0);
+        }
+
+        @keyframes floatHeartRomance {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 0.7; }
+            100% { transform: translateY(-150px) scale(1.2); opacity: 0; }
+        }
+
+        /* confetti canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 200;
+        }
+
+        /* subtle sparkle */
+        .sparkle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, #fff7c0, #ffdf8c);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 8;
+            animation: twinkling 2s infinite alternate;
+        }
+
+        @keyframes twinkling {
+            0% { opacity: 0.2; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.8); }
+        }
+
+        /* responsive */
+        @media (max-width: 480px) {
+            .gift-box { width: 120px; height: 120px; }
+            .gift-box::after { font-size: 58px; top: 24px; left: 28px; }
+            .gift-box::before { width: 22px; height: 120px; }
+            .surprise-message { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<div class="birthday-card">
+    <div class="cake-icon" id="cakeLove">🍰💖🍰</div>
+    <h1>Happy Birthday Aho ❤️</h1>
+    <div class="subtitle">With all my love, from your Dishu 💖</div>
+
+    <!-- Gift Box -->
+    <div class="gift-box" id="romanticGift"></div>
+
+    <div id="surpriseBlock" class="surprise-message">
+        ✨ I Love You Aho ✨<br>Have the Most Beautiful Birthday! 💕
+    </div>
+
+    <div id="extraRomanceZone" class="extra-romance" style="display: none;"></div>
+
+    <div class="typed-message" id="typingMessage"></div>
+
+    <button class="love-letter-btn" id="showLetterBtn">💌 Read my love letter 💌</button>
+
+    <div class="signature">
+        Forever Yours,<br>Dishu ❤️
+    </div>
+</div>
+
+<!-- Love Letter Modal -->
+<div id="loveLetterModal" class="modal">
+    <div class="modal-card">
+        <h2>🌸 My Dearest Aho 🌸</h2>
+        <p>From the moment you came into my life, every day feels like a beautiful poem written by destiny. Your smile is my sunrise, your laughter the sweetest melody. 💖</p>
+        <p>On your birthday, I just want to remind you that you are my greatest treasure, my safest home, and the reason my heart believes in forever. I promise to cherish you, support you, and love you more with every sunrise.</p>
+        <p>May this year bring you all the joy, success, and magic that you deserve. You are my everything, Aho. I love you endlessly.</p>
+        <p style="font-weight: 600;">❤️ Yours always, Dishu ❤️</p>
+        <button class="close-modal" id="closeModalBtn">Keep in my heart ✨</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // -------------------------------
+        // 1. Typing Effect (professional)
+        // -------------------------------
+        const loveText = "Happy Birthday, my precious Aho. 💫 On this special day, I wish you a life overflowing with laughter, sweet surprises, and the warmth of my eternal love. Every moment with you is a beautiful love story. You are my greatest blessing, and I'll always be by your side, cheering for you, holding you close. I love you deeply, today and forevermore. 💗";
+        let charIndex = 0;
+        const typingDiv = document.getElementById("typingMessage");
+        function typeLoveLetter() {
+            if (charIndex < loveText.length) {
+                typingDiv.innerHTML += loveText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeLoveLetter, 30);
+            }
+        }
+        typeLoveLetter();
+
+        // -------------------------------
+        // 2. Confetti system (canvas)
+        // -------------------------------
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let animationId = null;
+        let particles = [];
+
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            if (animationId) cancelAnimationFrame(animationId);
+            if (particles.length) runConfettiAnimation();
+        });
+
+        class ConfettiParticle {
+            constructor(x, y, size, color, speedX, speedY) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = color;
+                this.speedX = speedX;
+                this.speedY = speedY;
+                this.opacity = 1;
+            }
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+                ctx.globalAlpha = 1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.speedY += 0.2; // gravity
+                this.opacity -= 0.008;
+                return this.opacity <= 0 || this.y > height + 50;
+            }
+        }
+
+        function burstConfetti() {
+            if (animationId) cancelAnimationFrame(animationId);
+            particles = [];
+            const colors = ['#ff4d6d', '#ffb3ba', '#ffd966', '#ff9f4a', '#ff6f91', '#ffc8dd'];
+            for (let i = 0; i < 150; i++) {
+                const x = width / 2 + (Math.random() - 0.5) * 200;
+                const y = height / 2 - 70;
+                const size = 6 + Math.random() * 8;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const speedX = (Math.random() - 0.5) * 8;
+                const speedY = (Math.random() - 0.5) * 12 - 5;
+                particles.push(new ConfettiParticle(x, y, size, color, speedX, speedY));
+            }
+            runConfettiAnimation();
+            setTimeout(() => {
+                if (animationId) cancelAnimationFrame(animationId);
+                ctx.clearRect(0, 0, width, height);
+                particles = [];
+            }, 2000);
+        }
+
+        function runConfettiAnimation() {
+            if (animationId) cancelAnimationFrame(animationId);
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                let allDead = true;
+                for (let i = 0; i < particles.length; i++) {
+                    const isDead = particles[i].update();
+                    if (!isDead) {
+                        allDead = false;
+                        particles[i].draw();
+                    }
+                }
+                if (allDead || particles.length === 0) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                    return;
+                }
+                animationId = requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // -------------------------------
+        // 3. Gift logic + extra romance + heart explosion
+        // -------------------------------
+        const surpriseDiv = document.getElementById("surpriseBlock");
+        const extraZone = document.getElementById("extraRomanceZone");
+        let giftOpened = false;
+
+        function showExtraRomanticNote() {
+            extraZone.style.display = "inline-block";
+            extraZone.innerHTML = "🌹 “Aho, every heartbeat of mine whispers your name. You are my today and all of my tomorrows.” 🌹<br>✨ I promise to love you more with each sunrise. ✨";
+            extraZone.style.opacity = "0";
+            extraZone.style.transform = "translateY(12px)";
+            setTimeout(() => {
+                extraZone.style.transition = "all 0.5s ease";
+                extraZone.style.opacity = "1";
+                extraZone.style.transform = "translateY(0)";
+            }, 30);
+        }
+
+        function createFlyingHeartsFromGift() {
+            const giftRect = document.getElementById("romanticGift").getBoundingClientRect();
+            const cx = giftRect.left + giftRect.width / 2;
+            const cy = giftRect.top + giftRect.height / 2;
+            for (let i = 0; i < 40; i++) {
+                const heartFly = document.createElement('div');
+                heartFly.innerHTML = ['❤️', '💖', '💕', '💗', '💘', '🌹'][Math.floor(Math.random() * 6)];
+                heartFly.style.position = 'fixed';
+                heartFly.style.left = cx - 12 + 'px';
+                heartFly.style.top = cy - 12 + 'px';
+                heartFly.style.fontSize = (20 + Math.random() * 28) + 'px';
+                heartFly.style.pointerEvents = 'none';
+                heartFly.style.zIndex = '999';
+                heartFly.style.opacity = '0.9';
+                heartFly.style.transition = 'all 0.1s';
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 80 + Math.random() * 130;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance - 30;
+                heartFly.style.transform = `translate(0,0)`;
+                document.body.appendChild(heartFly);
+                requestAnimationFrame(() => {
+                    heartFly.style.transform = `translate(${dx}px, ${dy}px)`;
+                    heartFly.style.opacity = '0';
+                });
+                setTimeout(() => heartFly.remove(), 900);
+            }
+        }
+
+        function openGift() {
+            // Show surprise if hidden
+            if (surpriseDiv.style.display === "none" || surpriseDiv.style.display === "") {
+                surpriseDiv.style.display = "block";
+            } else {
+                surpriseDiv.style.animation = 'none';
+                setTimeout(() => surpriseDiv.style.animation = 'elegantZoom 0.5s forwards', 5);
+            }
+
+            // Visual & confetti burst
+            burstConfetti();
+            createFlyingHeartsFromGift();
+
+            if (!giftOpened) {
+                giftOpened = true;
+                showExtraRomanticNote();
+
+                // also floating "I LOVE YOU" message
+                const floatingMsg = document.createElement('div');
+                floatingMsg.innerText = '💝 I ADORE YOU, MY AHO 💝';
+                floatingMsg.style.position = 'fixed';
+                floatingMsg.style.left = '50%';
+                floatingMsg.style.top = '55%';
+                floatingMsg.style.transform = 'translate(-50%, -50%)';
+                floatingMsg.style.fontSize = '1.9rem';
+                floatingMsg.style.fontWeight = 'bold';
+                floatingMsg.style.fontFamily = "'Dancing Script', cursive";
+                floatingMsg.style.color = '#fff5e6';
+                floatingMsg.style.textShadow = '0 0 12px #ff2e63';
+                floatingMsg.style.background = 'rgba(0,0,0,0.2)';
+                floatingMsg.style.padding = '8px 24px';
+                floatingMsg.style.borderRadius = '50px';
+                floatingMsg.style.backdropFilter = 'blur(12px)';
+                floatingMsg.style.whiteSpace = 'nowrap';
+                floatingMsg.style.zIndex = '999';
+                floatingMsg.style.animation = 'elegantZoom 1s forwards';
+                document.body.appendChild(floatingMsg);
+                setTimeout(() => floatingMsg.remove(), 2200);
+            } else {
+                // additional cute effect
+                const mini = document.createElement('div');
+                mini.innerText = '💋 Every second, I love you more 💋';
+                mini.style.position = 'fixed';
+                mini.style.bottom = '15%';
+                mini.style.left = '50%';
+                mini.style.transform = 'translateX(-50%)';
+                mini.style.backgroundColor = '#ffe6ed';
+                mini.style.padding = '5px 20px';
+                mini.style.borderRadius = '40px';
+                mini.style.fontWeight = 'bold';
+                mini.style.color = '#b22b55';
+                mini.style.zIndex = '999';
+                mini.style.fontSize = '0.9rem';
+                mini.style.animation = 'fadeOutQuick 1.8s forwards';
+                document.body.appendChild(mini);
+                setTimeout(() => mini.remove(), 1800);
+            }
+        }
+
+        // style for fade out
+        const fadeStyle = document.createElement('style');
+        fadeStyle.textContent = `@keyframes fadeOutQuick { 0% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) scale(0.9); display: none; } }`;
+        document.head.appendChild(fadeStyle);
+
+        const giftElement = document.getElementById("romanticGift");
+        giftElement.addEventListener("click", openGift);
+
+        // pre-hide surprise initially
+        surpriseDiv.style.display = "none";
+        extraZone.style.display = "none";
+
+        // -------------------------------
+        // 4. Love Letter Modal Logic
+        // -------------------------------
+        const modal = document.getElementById("loveLetterModal");
+        const showBtn = document.getElementById("showLetterBtn");
+        const closeBtn = document.getElementById("closeModalBtn");
+
+        showBtn.addEventListener("click", () => {
+            modal.style.display = "flex";
+            // little flying letters effect
+            for (let i = 0; i < 12; i++) {
+                const letter = document.createElement('div');
+                letter.innerText = '💌';
+                letter.style.position = 'fixed';
+                letter.style.left = Math.random() * 100 + '%';
+                letter.style.top = Math.random() * 80 + 10 + '%';
+                letter.style.fontSize = (16 + Math.random() * 28) + 'px';
+                letter.style.pointerEvents = 'none';
+                letter.style.opacity = '0.7';
+                letter.style.animation = 'floatHeartRomance 1.5s ease-out forwards';
+                letter.style.zIndex = '1001';
+                document.body.appendChild(letter);
+                setTimeout(() => letter.remove(), 1500);
+            }
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) modal.style.display = "none";
+        });
+
+        // -------------------------------
+        // 5. Floating Romantic Elements (elegant)
+        // -------------------------------
+        function createRosePetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('rose-petal');
+            const roses = ['🌹', '🥀', '🌸', '🌷', '🌺'];
+            petal.innerText = roses[Math.floor(Math.random() * roses.length)];
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+            petal.style.animationDuration = (7 + Math.random() * 6) + 's';
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 13000);
+        }
+
+        function createHeartFloat() {
+            const heart = document.createElement('div');
+            heart.classList.add('romantic-heart');
+            heart.innerHTML = ['❤️', '💖', '💕', '💗', '💞', '✨'][Math.floor(Math.random() * 6)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (1.1 + Math.random() * 1.7) + 'rem';
+            heart.style.animationDuration = (9 + Math.random() * 7) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 13000);
+        }
+
+        function createSparkle() {
+            const spark = document.createElement('div');
+            spark.classList.add('sparkle');
+            spark.style.left = Math.random() * 100 + '%';
+            spark.style.top = Math.random() * 100 + '%';
+            document.body.appendChild(spark);
+            setTimeout(() => spark.remove(), 2000);
+        }
+
+        setInterval(createRosePetal, 600);
+        setInterval(createHeartFloat, 450);
+        setInterval(createSparkle, 380);
+
+        // click on cake extra love
+        const cakeBtn = document.getElementById("cakeLove");
+        cakeBtn.addEventListener("click", () => {
+            const cakeMsg = document.createElement('div');
+            cakeMsg.innerText = '😘 Sweetest love for you, Aho! 😘';
+            cakeMsg.style.position = 'fixed';
+            cakeMsg.style.bottom = '30%';
+            cakeMsg.style.left = '50%';
+            cakeMsg.style.transform = 'translateX(-50%)';
+            cakeMsg.style.background = '#ffdfc9';
+            cakeMsg.style.padding = '6px 20px';
+            cakeMsg.style.borderRadius = '40px';
+            cakeMsg.style.fontWeight = 'bold';
+            cakeMsg.style.color = '#9e2a4a';
+            cakeMsg.style.zIndex = '999';
+            cakeMsg.style.animation = 'fadeOutQuick 1.6s forwards';
+            document.body.appendChild(cakeMsg);
+            setTimeout(() => cakeMsg.remove(), 1600);
+            // add a little confetti puff
+            burstConfetti();
+        });
+
+        // final resize canvas
+        resizeCanvas();
+    })();
+</script>
+</body>
+</html>
